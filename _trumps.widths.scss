@@ -94,7 +94,7 @@ $use-fractions: true !default;
 /**
  * Twelfths.
  */
-[class*="1/12"]     { width: 8.3333333% !important; }
+[class*="1/12"]     { width:  8.3333333% !important; }
 [class*="5/12"]     { width: 41.6666666% !important; }
 [class*="7/12"]     { width: 58.3333333% !important; }
 [class*="11/12"]    { width: 91.6666666% !important; }
@@ -184,7 +184,7 @@ $use-fractions: true !default;
 /**
  * Twelfths.
  */
-.one-twelfth        { width: 8.3333333% !important; }
+.one-twelfth        { width:  8.3333333% !important; }
 .five-twelfths      { width: 41.6666666% !important; }
 .seven-twelfths     { width: 58.3333333% !important; }
 .eleven-twelfths    { width: 91.6666666% !important; }
