@@ -1,0 +1,20 @@
+{
+  "name": "inuitcss.widths",
+  "version": "6.0.0",
+  "description": "A series of width helper classes that you can use to size things like grid systems.",
+  "main": "_trumps.widths.scss",
+  "keywords": [
+    "sass",
+    "scss",
+    "responsive",
+    "framework",
+    "grid"
+  ],
+  "authors": [
+    "Harry Roberts (http://csswizardry.com)"
+  ],
+  "homepage": "http://inuitcss.com",
+  "ignore": [
+    "**/.*"
+  ]
+}
