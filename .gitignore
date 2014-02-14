@@ -1,0 +1,11 @@
+*~
+*#
+.DS_STORE
+.netbeans
+nbproject
+.idea
+.idea_modules
+*.ipr
+*.iws
+*.iml
+.sass-cache
