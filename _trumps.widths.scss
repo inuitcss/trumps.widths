@@ -10,10 +10,12 @@
  */
 
 $inuit-use-fractions: true !default;
-$inuit-widths: 2, 3, 4, 5, 6, 8, 9, 10, 12 !default;
+$inuit-responsive: false !default;
+$inuit-responsive-extra: false !default;
+$inuit-widths: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 !default;
 $inuit-namespace: null !default;
 
-@mixin inuit-widths($wholes...) {
+@mixin inuit-widths($prefix, $wholes...) {
   $inuit-width-map: () !default !global;
   $parts-map: (
     1:  One,
@@ -29,6 +31,7 @@ $inuit-namespace: null !default;
     11: Eleven
   );
   $wholes-map: (
+    1:  Whole,
     2:  Half,
     3:  Third,
     4:  Quarter,
@@ -49,11 +52,17 @@ $inuit-namespace: null !default;
      * #{map-get($wholes-map, $whole) or $whole + th}.
      */
 
-    @while $part < $whole {
+    @while $part < $whole or ($whole == $part and $part == 1) {
       $part-selector: #{$part};
       $separator-selector: "/";
       $whole-selector: #{$whole};
       $width: $part / $whole * 100 + "%";
+
+      // One Whole
+      @if $whole == 1 {
+        $separator-selector: "-";
+        $whole-selector: #{to-lower-case(map-get($wholes-map, $whole))};
+      }
 
       // Use spoken-words & check if the corresponding word exists in $wholes-map.
       @if $inuit-use-fractions == false {
@@ -66,11 +75,11 @@ $inuit-namespace: null !default;
         }
       }
 
-      $selector: '[class*="#{$inuit-namespace}#{$part-selector}#{$separator-selector}#{$whole-selector}"]';
+      $selector: '[class*="#{$inuit-namespace}#{$prefix}#{$part-selector}#{$separator-selector}#{$whole-selector}"]';
 
       // First uses of a specific width.
-      @if map-get($inuit-width-map, #{$inuit-namespace} + $width) == null {
-        $inuit-width-map: map-merge($inuit-width-map,(#{$inuit-namespace} + $width: $selector)) !global;
+      @if map-get($inuit-width-map, #{$inuit-namespace} + #{$prefix} + $width) == null {
+        $inuit-width-map: map-merge($inuit-width-map,(#{$inuit-namespace} + #{$prefix} + $width: $selector)) !global;
         #{$selector} {
           width: #{$width} !important;
         }
@@ -79,7 +88,7 @@ $inuit-namespace: null !default;
       // Extend a previous selector which has the same width property.
       @else {
         #{$selector} {
-          @extend #{map-get($inuit-width-map, #{$inuit-namespace} + $width)};
+          @extend #{map-get($inuit-width-map, #{$inuit-namespace} + #{$prefix} + $width)};
         }
       }
 
@@ -88,4 +97,37 @@ $inuit-namespace: null !default;
   }
 }
 
-@include inuit-widths($inuit-widths...);
+@include inuit-widths("", $inuit-widths...);
+
+@if $inuit-responsive == true {
+  @if mixin-exists(media-query) {
+
+    @include media-query(palm) {
+      @include inuit-widths("palm-", $inuit-widths...);
+    }
+
+    @include media-query(lap) {
+      @include inuit-widths("lap-", $inuit-widths...);
+    }
+
+    @include media-query(lap-and-up) {
+      @include inuit-widths("lap-and-up-", $inuit-widths...);
+    }
+
+    @include media-query(portable) {
+      @include inuit-widths("portable-", $inuit-widths...);
+    }
+
+    @include media-query(desk) {
+      @include inuit-widths("desk-", $inuit-widths...);
+    }
+
+    @if $inuit-responsive-extra == true {
+      @include media-query(desk-wide) {
+        @include inuit-widths("desk-wide-", $inuit-widths...);
+      }
+    }
+  } @else {
+    @warn "You set '$inuit-responsive' to 'true', but the 'media-query' mixin from Inuit.css is not available.";
+  }
+}
