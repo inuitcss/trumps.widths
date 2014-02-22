@@ -66,7 +66,7 @@ $inuit-namespace: null !default;
         }
       }
 
-      $selector: '[class*="#{$inuit-namespace}#{$part-selector}#{$separator-selector}#{$whole-selector}"]';
+      $selector: '[class~="#{$inuit-namespace}#{$part-selector}#{$separator-selector}#{$whole-selector}"]';
 
       // First uses of a specific width.
       @if map-get($inuit-width-map, #{$inuit-namespace} + $width) == null {
