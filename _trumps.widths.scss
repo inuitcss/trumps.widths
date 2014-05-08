@@ -10,8 +10,8 @@
  */
 
 $inuit-use-fractions: true !default;
-$inuit-responsive: false !default;
-$inuit-responsive-extra: false !default;
+$inuit-enable-widths--responsive: false !default;
+$inuit-enable-widths--responsive-extra: false !default;
 $inuit-widths: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 !default;
 $inuit-namespace: null !default;
 
@@ -99,7 +99,7 @@ $inuit-namespace: null !default;
 
 @include inuit-widths("", $inuit-widths...);
 
-@if $inuit-responsive == true {
+@if $inuit-enable-widths--responsive == true {
   @if mixin-exists(media-query) {
 
     @include media-query(palm) {
@@ -122,12 +122,12 @@ $inuit-namespace: null !default;
       @include inuit-widths("desk-", $inuit-widths...);
     }
 
-    @if $inuit-responsive-extra == true {
+    @if $inuit-enable-widths--responsive-extra == true {
       @include media-query(desk-wide) {
         @include inuit-widths("desk-wide-", $inuit-widths...);
       }
     }
   } @else {
-    @warn "You set '$inuit-responsive' to 'true', but the 'media-query' mixin from Inuit.css is not available.";
+    @warn "You set '$inuit-enable-widths--responsive' to 'true', but the 'media-query' mixin from Inuit.css is not available.";
   }
 }
