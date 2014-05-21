@@ -10,8 +10,8 @@
  */
 @mixin grid-setup($namespace: ''){
 
-    @for $i from 1 to ($columns + 1) {
-        [class~='#{$namespace}#{$i}/#{$columns}']{
+    @for $i from 1 to ($grid-columns + 1) {
+        [class~='#{$namespace}#{$i}/#{$grid-columns}']{
             @include column($i);
         }
     }
