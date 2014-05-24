@@ -35,14 +35,14 @@ $inuit-namespace: null !default;
     2:  Half,
     3:  Third,
     4:  Quarter,
-    5:  Fifths,
-    6:  Sixths,
+    5:  Fifth,
+    6:  Sixth,
     7:  Seventh,
-    8:  Eighths,
-    9:  Ninths,
-    10: Tenths,
+    8:  Eighth,
+    9:  Ninth,
+    10: Tenth,
     11: Eleventh,
-    12: Twelfths
+    12: Twelfth
   );
 
   @each $whole in $wholes {
@@ -70,6 +70,12 @@ $inuit-namespace: null !default;
           $part-selector: #{to-lower-case(map-get($parts-map, $part))};
           $separator-selector: "-";
           $whole-selector: #{to-lower-case(map-get($wholes-map, $whole))};
+
+          // Pluralize the selector
+          @if $part > 1 {
+            $whole-selector: $whole-selector + 's';
+          }
+
         } @else {
           @warn $whole + " is an undefined spoken-word width in Inuit.css.";
         }
@@ -79,7 +85,7 @@ $inuit-namespace: null !default;
 
       // First uses of a specific width.
       @if map-get($inuit-width-map, #{$inuit-namespace} + #{$prefix} + $width) == null {
-        $inuit-width-map: map-merge($inuit-width-map,(#{$inuit-namespace} + #{$prefix} + $width: $selector)) !global;
+        $inuit-width-map: map-merge($inuit-width-map, (#{$inuit-namespace} + #{$prefix} + $width: $selector)) !global;
         #{$selector} {
           width: #{$width} !important;
         }
