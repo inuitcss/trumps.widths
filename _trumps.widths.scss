@@ -105,3 +105,19 @@
 
 
 @include inuit-widths();
+
+
+/**
+ * Loops through every breakpoint set in "_settings.responsive" and
+ * takes care of creating the resposive width-classes
+ */
+@each $breakpoint in $breakpoints {
+
+    $brkpt: nth($breakpoint, 1);
+
+    @include media-query($brkpt){
+
+        @include inuit-widths($brkpt+'-');
+
+    }
+}
