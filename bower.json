@@ -1,6 +1,6 @@
 {
   "name": "inuit-widths",
-  "version": "0.2.2",
+  "version": "0.3.1",
   "homepage": "https://github.com/inuitcss/trumps.widths",
   "authors": [
     "Harry Roberts <harry@csswizardry.com>"
@@ -14,7 +14,7 @@
   ],
   "license": "Apache",
   "dependencies": {
-    "genesis-mixins": "~0.1.0",
-    "inuit-defaults": "~0.1.0"
+    "genesis-mixins": "~0.1.6",
+    "inuit-defaults": "~0.2.0"
   }
 }

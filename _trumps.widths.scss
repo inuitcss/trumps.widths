@@ -4,11 +4,11 @@
 
 /**
  * A series of width helper classes that you can use to size things like grid
- * systems. Classes can take a fraction-like format (e.g. `.2/3`) or a spoken-
- * word format (e.g. `two-thirds`). Toggle formats by overriding the
- * `$inuit-use-fractions` variable defined below.
+ * systems. Classes take a fraction-like format (e.g. `.6/12`) depending on
+ * your defined grid-columns. Also you'll find some common widths in a spoken-
+ * word format (e.g. `two-thirds`).
  */
-@mixin grid-setup($namespace: ''){
+@mixin inuit-widths($namespace: ''){
 
     @for $i from 1 to ($grid-columns + 1) {
         [class~='#{$namespace}#{$i}/#{$grid-columns}']{
@@ -58,36 +58,4 @@
 }
 
 
-@include grid-setup();
-
-
-/**
- *
- * Based on "_widths.scss" from inuitcss by Harry Roberts:
- * https://github.com/csswizardry/inuit.css/blob/master/generic/_widths.scss
- *
- * Responsive width classes
- */
-@include media-query(portable){
-    @include grid-setup('portable-');
-}
-
-@include media-query(palm){
-    @include grid-setup('palm-');
-}
-
-@include media-query(lap){
-    @include grid-setup('lap-');
-}
-
-@include media-query(lap-and-up){
-    @include grid-setup('lap-and-up-');
-}
-
-@include media-query(desk){
-    @include grid-setup('desk-');
-}
-
-@include media-query(desk-wide){
-    @include grid-setup('desk-wide-');
-}
+@include inuit-widths();
