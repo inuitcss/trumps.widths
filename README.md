@@ -7,6 +7,10 @@ Install using Bower:
 
     $ bower install --save inuit-widths
 
+Install using npm:
+
+    $ npm install --save inuit-widths
+
 inuitcss’ widths classes are available in one of two formats. The default format
 is fraction-like, e.g.: `<div class="1/2">`.
 

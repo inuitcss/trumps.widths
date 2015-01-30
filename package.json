@@ -1,0 +1,24 @@
+{
+  "name": "inuit-widths",
+  "version": "0.3.2",
+  "description": "Base heading rules for the inuitcss framework",
+  "main": "_trumps.widths.scss",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inuitcss/trumps.widths.git"
+  },
+  "author": "Harry Roberts <harry@csswizardry.com>",
+  "license": "Apache 2",
+  "bugs": {
+    "url": "https://github.com/inuitcss/trumps.widths/issues"
+  },
+  "homepage": "https://github.com/inuitcss/trumps.widths",
+  "keywords": [
+    "inuitcss",
+    "oocss",
+    "css"
+  ],
+  "dependencies": {
+    "inuit-defaults": "~0.2.0"
+  }
+}
