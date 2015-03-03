@@ -10,13 +10,14 @@
  * <div class="u-7/12">
  */
 
-// By default we will create halves, thirds, quarters, and fifths. Predefine
-// this Map to override.
+// By default we will create wholes, halves, thirds, quarters, and fifths.
+// Predefine this Map to override.
 $inuit-widths-columns: (
-  2,
-  3,
-  4,
-  5,
+    1,
+    2,
+    3,
+    4,
+    5,
 ) !default;
 
 @include inuit-widths($inuit-widths-columns);
