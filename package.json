@@ -1,6 +1,6 @@
 {
   "name": "inuit-widths",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Base heading rules for the inuitcss framework",
   "main": "_trumps.widths.scss",
   "repository": {
@@ -19,6 +19,7 @@
     "css"
   ],
   "dependencies": {
-    "inuit-defaults": "~0.2.0"
+    "inuit-defaults": "~0.2.0",
+    "inuit-tools-widths": "~0.1.0"
   }
 }
